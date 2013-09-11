@@ -47,3 +47,13 @@ var app = {
         console.log('Received Event: ' + id);
     }
 };
+
+function testCtrl($scope){
+
+    $scope.testAngular = function(){
+
+        alert("hooola");
+
+    }
+
+}
