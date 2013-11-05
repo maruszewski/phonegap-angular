@@ -34,19 +34,6 @@ var app = {
     // function, we must explicity call 'app.receivedEvent(...);'
     onDeviceReady: function() {
         app.receivedEvent('deviceready');
-
-        cordova.plugins.barcodeScanner.scan(
-	      function (result) {
-	          alert("We got a barcode\n" +
-	                "Result: " + result.text + "\n" +
-	                "Format: " + result.format + "\n" +
-	                "Cancelled: " + result.cancelled);
-	      }, 
-	      function (error) {
-	          alert("Scanning failed: " + error);
-	      }
-	   );
-        
     },
     // Update DOM on a Received Event
     receivedEvent: function(id) {
@@ -63,9 +50,21 @@ var app = {
 
 function testCtrl($scope){
 
-    $scope.testAngular = function(){
+    $scope.scan = function(){
 
-        alert("hooola");
+    alert("scan-starts");
+
+	cordova.plugins.barcodeScanner.scan(
+	      function (result) {
+	          alert("We got a barcode\n" +
+	                "Result: " + result.text + "\n" +
+	                "Format: " + result.format + "\n" +
+	                "Cancelled: " + result.cancelled);
+	      }, 
+	      function (error) {
+	          alert("Scanning failed: " + error);
+	      }
+	   );
 
     }
 
